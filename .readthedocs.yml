@@ -5,11 +5,15 @@
 version: 2
 formats: []
 build:
-  image: latest
+  os: ubuntu-22.04
+  tools:
+    python: "3.8"
   apt_packages:
     - ditaa
+  jobs:
+    pre_build:
+      - git checkout origin/main -- doc/releases
 python:
-  version: 3.8
   install:
     - requirements: admin/doc-requirements.txt
     - requirements: admin/doc-read-the-docs.txt
